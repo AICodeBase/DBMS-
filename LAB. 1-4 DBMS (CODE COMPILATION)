@@ -196,3 +196,129 @@ INSERT INTO Transactions (MemberID, BookID, IssueDate, ReturnDate) VALUES
 
 SELECT * FROM Books,Members,Transactions;
 
+CREATE TABLE UnNormalizedBooks (
+
+   BookID INT,
+
+   Title VARCHAR(100),
+
+   Authors VARCHAR(100),
+
+   Genre VARCHAR(50)
+
+);
+
+INSERT INTO UnNormalizedBooks (BookID, Title, Authors, Genre)
+
+VALUES
+
+(1, 'Book A', 'Author1, Author2', 'Fiction'),
+
+(2, 'Book B', 'Author3', 'Non-Fiction');
+
+CREATE TABLE Books_1NF (
+
+   BookID INT,
+
+   Title VARCHAR(100),
+
+   Author VARCHAR(100),
+
+   Genre VARCHAR(50)
+
+);
+
+INSERT INTO Books_1NF (BookID, Title, Author, Genre)
+
+VALUES
+
+(1, 'Book A', 'Author1', 'Fiction'),
+
+(1, 'Book A', 'Author2', 'Fiction'),
+
+(2, 'Book B', 'Author3', 'Non-Fiction');
+
+CREATE TABLE Books_1NF (
+
+   BookID INT,
+
+   Title VARCHAR(100),
+
+   Author VARCHAR(100),
+
+   Genre VARCHAR(50),
+
+   Publisher VARCHAR(100),
+
+   PublisherAddress VARCHAR(100)
+
+);
+
+INSERT INTO Books_1NF (BookID, Title, Author, Genre, Publisher, PublisherAddress)
+
+VALUES
+
+(1, 'Book A', 'Author1', 'Fiction', 'Publisher1', 'Address1'),
+
+(2, 'Book B', 'Author2', 'Non-Fiction', 'Publisher1', 'Address1');
+
+CREATE TABLE Books_2NF (
+
+   BookID INT PRIMARY KEY,
+
+   Title VARCHAR(100),
+
+   Author VARCHAR(100),
+
+   Genre VARCHAR(50)
+
+);
+
+CREATE TABLE Publishers (
+
+   PublisherID INT PRIMARY KEY,
+
+   PublisherName VARCHAR(100),
+
+   PublisherAddress VARCHAR(100)
+
+);
+
+CREATE TABLE Books_2NF (
+
+   BookID INT,
+
+   Title VARCHAR(100),
+
+   Author VARCHAR(100),
+
+   Genre VARCHAR(50),
+
+   PublisherID INT,
+
+   PublisherName VARCHAR(100),
+
+   PublisherAddress VARCHAR(100)
+
+);
+
+INSERT INTO Books_2NF (BookID, Title, Author, Genre, PublisherID,
+
+PublisherName, PublisherAddress)
+
+VALUES
+
+(1, 'Book A', 'Author1', 'Fiction', 1, 'Publisher1', 'Address1'),
+
+(2, 'Book B', 'Author2', 'Non-Fiction', 1, 'Publisher1', 'Address1');
+
+CREATE TABLE Publishers_3NF (
+
+   PublisherID INT PRIMARY KEY,
+
+   PublisherName VARCHAR(100),
+
+   PublisherAddress VARCHAR(100)
+
+);
+
